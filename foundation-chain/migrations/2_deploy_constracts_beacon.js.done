@@ -1,0 +1,33 @@
+
+const { deployBeacon, deployBeaconProxy } = require('@openzeppelin/truffle-upgrades');
+//const { upgradeProxy } = require('@openzeppelin/truffle-upgrades');
+
+const CellarNftSale = artifacts.require('CellarNftSale');
+const CellarMarket = artifacts.require('CellarMarket');
+
+var version_suffix = "-UD";
+
+module.exports = async function (deployer) {
+  
+    //step1: nft
+    const cellarNftSaleBeacon = await  deployBeacon(CellarNftSale);
+    console.log('CellarNftSale.Beacon_deployed', cellarNftSaleBeacon.address);
+
+    const cellarNFTSaleInstance = await deployBeaconProxy(cellarNftSaleBeacon, CellarNftSale, ["WineCellarNFT"+version_suffix, "WCNFT"+version_suffix,2], { deployer });
+    console.log('CellarNftSale.deployed', cellarNFTSaleInstance.address);
+    
+    
+    //step2:coin
+    const cellarMarketBeacon = await deployBeacon(CellarMarket);
+    console.log('CellarMarket.Beacon_deployed', cellarMarketBeacon.address);
+
+    const cellarMarketInstance = await deployBeaconProxy(cellarMarketBeacon, CellarMarket, [cellarNFTSaleInstance.address,"WineCellarCoin"+version_suffix, "W2C"+version_suffix,0], { deployer });
+    console.log('CellarMarket.deployed', cellarMarketInstance.address);
+ 
+    //step3:init data
+    cellarNFTSaleInstance.grantMintRole(cellarMarketInstance.address);
+    cellarNFTSaleInstance.grantMarket(cellarMarketInstance.address);
+    cellarNFTSaleInstance.setPlatformFeePercent(3);
+   
+
+};

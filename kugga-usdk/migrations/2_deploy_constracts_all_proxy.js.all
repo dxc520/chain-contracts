@@ -1,0 +1,100 @@
+
+const { deployProxy } = require('@openzeppelin/truffle-upgrades');
+
+const UChildERC20 = artifacts.require('UChildERC20Upgradeable');
+ 
+const BountyPledge = artifacts.require('BountyPledge');
+
+const bountyName = "BountyPledge";
+const bountySymbol = "BP";
+const erc20Name = "kugga:usdk";
+const erc20Symbol = "USDK";
+const decimals =  6
+const admin = "0x8fd86498ff1b750454f5187cc0b2bc6b51d0e07b";
+const user1 = "0x4293859c2429c5554174D4ea9b336559933847D2";//origin-accout2
+const childChainManager = admin ;
+const pz = "0xD61c47B00BB534993f6A79A6561c7a6184aDF616";
+const user2 = "0xD184e3366aB119A1EA9ef0775429f96E426fC6A2"; //LiuJinye
+const usdcMumbai = '0xE097d6B3100777DC31B34dC2c58fB524C2e76921'; //mumbai 测试网的 usdc代币
+const usdkSolarChain = "0x536274C4a091D502928ecE0397962c84D9d18b1b";
+
+module.exports = async function (deployer) {
+    //step1:coin
+    
+    const usdkInstance = await deployProxy(UChildERC20, [erc20Name, erc20Symbol,decimals,childChainManager], { deployer });
+    console.log('UsdkERC20.deployed', usdkInstance.address);
+  
+    const bpInstance = await deployProxy(BountyPledge, [bountyName, bountySymbol,usdkInstance.address,erc20Symbol], { deployer });
+    //const bpInstance = await deployProxy(BountyPledge, [bountyName, bountySymbol,usdkSolarChain], { deployer });
+    console.log('bountyPledge.deployed', bpInstance.address);
+ 
+
+    //step2:init data
+    
+    const depositRole =  await usdkInstance.DEPOSITOR_ROLE();
+    console.log("depositRole=",depositRole);
+
+    let tx1=  await usdkInstance.grantRole(depositRole,admin);
+    console.log("tx.grantRole=",tx1.tx);
+    let tx2 = await usdkInstance.deposit2(admin ,654321000000);
+    console.log("tx.deposit2.admin=",tx2.tx);
+
+
+    let amountData = web3.eth.abi.encodeParameters(['uint256'],[3456789000000]);
+    let txMint2 = await usdkInstance.deposit(user1, amountData);
+    console.log("tx.usdk.mint=", txMint2.tx);
+    
+    
+    
+ /*   
+    //让质押合约可操作usdt
+    let allowance = 2000000; //2个
+    let transferAmountAvg = 500000;//半个
+    let tx4 = await usdkInstance.approve(bpInstance.address,allowance);
+    console.log("tx.increaseAllowance=",tx4.tx);
+ 
+    //let bountyId = Math.floor(new Date().getTime() / 1000);
+    let startTime=Math.floor(new Date().getTime() / 1000);
+    let endTime0=Math.floor(new Date('2023-1-26 19:45:23').getTime() / 1000);
+    let endTime=Math.floor(startTime +3600); //延后一小时
+    console.log("startTime=",startTime,";endTime=",endTime,";endTimeTmp=",endTime0);
+
+    bountyReq ={
+        startTime:startTime,
+        endTime:endTime,
+        bountyType:2,//1=single,2=multiple
+        cid:"QM02dfdfierewrewlerwr",
+        amount:allowance,
+        unit:1,//1=usdt,2=matic,
+         
+    };
+
+    //质押
+    let tx6 = await bpInstance.pledge(bountyReq);
+    console.log("tx.pledge=",tx6.tx);
+
+    //分账
+    let bountyId = bountyReq.cid; 
+    console.log("bountyId=",bountyId);
+    let tx7 = await bpInstance.transfer(bountyId,pz,transferAmountAvg,"QM:reply-"+pz+"-"+1);
+    console.log("tx7.transfer.1=",tx7.tx);
+    tx7 = await bpInstance.transfer(bountyId,user2,transferAmountAvg,"QM:reply-"+user2+"-"+1);
+    console.log("tx7.transfer.2=",tx7.tx);
+
+    // getWinner
+    let winners = await bpInstance.getWinners(bountyId);
+    console.log("winners=",winners);
+
+    //expire
+    let expiredTime  = Math.floor(new Date().getTime() / 1000);
+    let tx8 =  await bpInstance.setBountyExpired(bountyId,expiredTime);
+    console.log("tx8.setBountyExpired=",tx8.tx);
+
+    //withdraw
+    let tx9 = await bpInstance.withdraw(bountyId);
+    console.log("tx9.withdraw=",tx9.tx);
+
+    let bountyStatus = await bpInstance.getBounty(bountyId);
+    console.log("tx10.bountyStatus=",bountyStatus);
+    */
+};

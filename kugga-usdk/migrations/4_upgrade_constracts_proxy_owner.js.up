@@ -1,0 +1,47 @@
+
+const { admin } = require('@openzeppelin/truffle-upgrades');
+const BountyPledge = artifacts.require('BountyPledgeV2');
+const Migrations = artifacts.require("Migrations");
+
+const newOwner = "0x4293859c2429c5554174D4ea9b336559933847D2";
+module.exports = async function (deployer) {
+  let migrationsInstance  =await Migrations.deployed();
+  console.log("MigrationsInstance=",migrationsInstance.address);
+
+  let migrateOwner = await migrationsInstance.owner();
+  console.log("migrateOwner=",migrateOwner);
+
+  const bountyPledgeV1 = await BountyPledge.deployed();
+  console.log("Upgraded.bountyPledgeV1.address=", bountyPledgeV1.address);
+
+  let bpOwner = await bountyPledgeV1.owner();
+  console.log("bp.owner1=", bpOwner);
+
+  const instance = await admin.getInstance()
+  console.log("admin.address=", instance.address);
+
+  const ship = await admin.transferProxyAdminOwnership(newOwner)
+  console.log("Upgraded.ship=", ship);
+
+  const instance2 = await admin.getInstance()
+  console.log("admin2.address=", instance2.address);
+
+  bpOwner = await bountyPledgeV1.owner();
+  console.log("bp.owner1=", bpOwner);
+
+  let transOwner = await bountyPledgeV1.transferOwnership(newOwner);
+  console.log("transOwner.tx=", transOwner.tx);
+
+  bpOwner = await bountyPledgeV1.owner();
+  console.log("bp.owner2=", bpOwner);
+
+  //let transMigrateOwner = await migrationsInstance.transferOwnership(newOwner);
+  //console.log("transMigrateOwner.tx=", transMigrateOwner.tx);
+
+
+  migrateOwner = await migrationsInstance.owner();
+  console.log("migrateOwner=",migrateOwner);
+
+  console.log("单独修改migration 的owner...然后切换至新用户，继续部署升级");
+
+};

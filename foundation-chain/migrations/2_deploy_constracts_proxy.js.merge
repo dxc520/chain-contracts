@@ -1,0 +1,49 @@
+
+const { deployProxy } = require('@openzeppelin/truffle-upgrades');
+
+const CellarNftSale = artifacts.require('CellarNftSale');
+const CellarNft1155Sale = artifacts.require('CellarNft1155Sale');
+const CellarMarket = artifacts.require('CellarMarketV4');
+
+
+
+
+var version_suffix = "-PD";
+
+module.exports = async function (deployer) {
+  
+    //step1: nft
+    const cellarNFTSaleInstance = await deployProxy( CellarNftSale, ["WineCellarNFT"+version_suffix, "WCNFT"+version_suffix,2], { deployer });
+    console.log('CellarNftSale.deployed', cellarNFTSaleInstance.address);
+    
+    const cellar1155NFTSaleInstance = await deployProxy( CellarNft1155Sale, ["WineCellarMNFT"+version_suffix, "WCMNFT"+version_suffix,"",2], { deployer });
+    console.log('cellar1155NFTSale.deployed', cellar1155NFTSaleInstance.address);
+    
+
+    //step2:coin
+    const cellarMarketInstance = await deployProxy(CellarMarket, [cellarNFTSaleInstance.address,cellar1155NFTSaleInstance.address,"WineCellarCoin"+version_suffix, "W2C"+version_suffix,0], { deployer });
+    console.log('CellarMarket.deployed', cellarMarketInstance.address);
+ 
+    //step3:init data
+    cellarNFTSaleInstance.grantMintRole(cellarMarketInstance.address);
+    cellarNFTSaleInstance.grantMarket(cellarMarketInstance.address);
+    cellarNFTSaleInstance.setPlatformFeePercent(3);
+    cellarNFTSaleInstance.grantMintRole("0x58089c1bD86f41bE9d0Eed475731FF72C296016E");
+
+    cellar1155NFTSaleInstance.grantMintRole(cellarMarketInstance.address);
+    cellar1155NFTSaleInstance.grantMarket(cellarMarketInstance.address);
+    cellar1155NFTSaleInstance.setPlatformFeePercent(3);
+    cellar1155NFTSaleInstance.grantMintRole("0x58089c1bD86f41bE9d0Eed475731FF72C296016E");
+   
+    cellarMarketInstance.grantMintRole("0x58089c1bD86f41bE9d0Eed475731FF72C296016E");
+    cellarMarketInstance.setDecimal(0);
+};
+
+
+
+
+
+ 
+
+
+ 

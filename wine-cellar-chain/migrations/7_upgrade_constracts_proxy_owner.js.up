@@ -1,0 +1,15 @@
+
+const {admin } = require('@openzeppelin/truffle-upgrades');
+
+
+module.exports = async function (deployer) {
+
+  const instance  =  await admin.getInstance()
+  console.log("admin.address=",instance.address);
+
+  const ship = await admin.transferProxyAdminOwnership("0x8fD86498ff1B750454f5187cc0B2bC6b51d0E07B")
+  console.log("Upgraded.ship=", ship);
+
+  const instance2  =  await admin.getInstance()
+  console.log("admin2.address=",instance2.address);
+};

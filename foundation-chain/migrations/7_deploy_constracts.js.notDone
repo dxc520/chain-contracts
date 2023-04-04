@@ -1,0 +1,18 @@
+
+const CellarNft1155SaleExt = artifacts.require('CellarNft1155Sale');
+const CellarNftSaleV2 = artifacts.require('CellarNftSaleV2');
+
+const HackAttackV1 = artifacts.require('HackAttackV1');
+
+
+module.exports = async function (deployer) {
+  const existingERC1155 = await CellarNft1155SaleExt.deployed();
+  console.log("existing.CellarNft1155Sale.address=", existingERC1155.address);
+
+  const existingERC721 = await CellarNftSaleV2.deployed();
+  console.log("existing.CellarNftSale.address=", existingERC721.address);
+
+  const hack = await deployer.deploy(HackAttackV1,existingERC1155.address,existingERC721.address);
+  console.log("deployed.hack.address=",hack.address);
+  };
+  

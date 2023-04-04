@@ -1,0 +1,64 @@
+const UChildERC20 = artifacts.require("UChildERC20Upgradeable");
+
+contract('UChildERC20', (accounts) => {
+
+    console.log("the UChildERC20 accounts=", accounts);
+
+    let _mintOwner = accounts[0];//address(0x8fD86498ff1B750454f5187cc0B2bC6b51d0E07B);
+    let _amount = 315;//铸币数量  
+    let _user1 = "0x8fd86498ff1b750454f5187cc0b2bc6b51d0e07b";
+    let _user2 = "0x4293859c2429c5554174D4ea9b336559933847D2";
+    let _UChildERC20Instance;
+
+    beforeEach(async function () {
+        _UChildERC20Instance = await UChildERC20.deployed();
+    });
+
+    it('get contract name', async () => {
+        let _name = await _UChildERC20Instance.name();
+        console.log("_name= ", _name);
+    });
+
+    it('get contract symbol', async () => {
+        let _symbol = await _UChildERC20Instance.symbol();
+        console.log("_symbol= ", _symbol);
+    });
+
+    it('mint', async () => {
+
+        let txMint1 = await _UChildERC20Instance.deposit2(_user1, _amount);
+
+        let amountData = web3.eth.abi.encodeParameters(
+            ['uint256'],
+            [_amount]
+        )
+
+        console.log("txMint1=", txMint1.tx);
+        let txMint2 = await _UChildERC20Instance.deposit(_user2, amountData);
+        console.log("txMint2=", txMint2.tx);
+
+
+    });
+
+    it('transfer', async () => {
+        let txTransfer = await _UChildERC20Instance.transfer(_user2,2);
+        console.log("txTransfer=",txTransfer.tx);
+        //let txSafeTransfer = await _UChildERC20Instance.transferFrom(_user2,_user1,2);
+        //console.log("failed：txSafeTransfer=",txSafeTransfer);
+    });
+
+    it('balanceOf', async () => {
+
+        let user1Balance = await _UChildERC20Instance.balanceOf(_user1);
+        console.log("user1Balance=", user1Balance.toNumber());
+ 
+        let user2Balance = await _UChildERC20Instance.balanceOf(_user2);
+        console.log("user1Balance=", user2Balance.toNumber());
+    });
+
+    it('proxy', async () => {
+
+         
+    });
+
+});

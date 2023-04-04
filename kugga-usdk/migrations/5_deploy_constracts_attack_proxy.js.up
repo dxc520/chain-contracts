@@ -1,0 +1,75 @@
+
+const { deployProxy } = require('@openzeppelin/truffle-upgrades');
+
+const HackAttackV1 = artifacts.require('HackAttackV1');
+const UChildERC20 = artifacts.require('UChildERC20Upgradeable');
+const BountyPledgeV2 = artifacts.require('BountyPledgeV2');
+const erc20Symbol = "USDK";
+const initAmount = 50;
+
+  
+module.exports = async function (deployer) {
+    //step1:coin
+    const UChildERC20Instance = await UChildERC20.deployed();
+    console.log("UChildERC20.address=", UChildERC20Instance.address);
+    const BountyPledgeV2Instance = await BountyPledgeV2.deployed();
+    console.log("BountyPledgeV2.address=", BountyPledgeV2Instance.address);
+
+    const hackAttackInstance = await deployProxy(HackAttackV1, [UChildERC20Instance.address,BountyPledgeV2Instance.address], { deployer });
+    console.log('hackAttackInstance.deployed', hackAttackInstance.address);
+
+
+    
+
+    let bountyCid = "Qmwet657896534fdf23";
+    let allowance = 15000000 ;//15个
+    let transferAmount = 5000000;//5个
+    let reward3=3000000 ;//3个
+    let reward=1000000 ;//1个
+    let rewardUnit = erc20Symbol;
+
+    let tx1 = await UChildERC20Instance.approve(hackAttackInstance.address,allowance); //15个
+    console.log("tx1.usdk.approve=",tx1.tx);
+
+    //let tx11 = await hackAttackInstance.transferSolarChain(5000000000);//向攻击合约转5 sc
+    //console.log("tx11=",tx11.tx);
+
+    let tx2 = await UChildERC20Instance.transfer(hackAttackInstance.address,transferAmount);//5个
+    console.log("tx2.usdk.transfer=",tx2.tx);
+
+    let tx3 = await hackAttackInstance.approve(transferAmount);//5个 ，测试交易调用情况
+    console.log("tx3.approve=",tx3.tx);
+
+    let tx31 = await hackAttackInstance.pledge(bountyCid, reward3,rewardUnit);//1个==>3个
+    console.log("tx31.hackAttackInstance.pledge=",tx31.tx);
+
+
+    //分账
+    let tx32 = await hackAttackInstance.attackTransfer(bountyCid,reward); 
+    console.log("tx32.hackAttackInstance.attackTransfer=",tx32.tx);
+    
+/**
+    //expire
+    let expiredTime  = Math.floor(new Date().getTime() / 1000);
+    let tx8 =  await BountyPledgeV2Instance.setBountyExpired(bountyCid,expiredTime);
+    console.log("tx8.setBountyExpired=",tx8.tx);
+    
+
+    let tx33 = await hackAttackInstance.attactWithdraw(bountyCid); 
+    console.log("tx33.hackAttackInstance.attactWithdraw=",tx33.tx);
+
+*/
+
+   let startTime=Math.floor(new Date().getTime() / 1000);
+   let endTime0=Math.floor(new Date('2023-1-26 19:45:23').getTime() / 1000);
+   let endTime=Math.floor(startTime +3600); //延后一小时
+   let cid="Qmjlfdjslafjodsjfoi";
+   console.log("startTime=",startTime,";endTime=",endTime,";endTimeTmp=",endTime0);
+   
+
+    tx1 = await UChildERC20Instance.approve(BountyPledgeV2Instance.address,allowance); //15个
+    console.log("tx4.usdk.approve=",tx1.tx);
+
+   let tx5 = await BountyPledgeV2Instance.pledge2(startTime,endTime,2,cid,reward,erc20Symbol);
+   console.log("tx5=",tx5);
+};

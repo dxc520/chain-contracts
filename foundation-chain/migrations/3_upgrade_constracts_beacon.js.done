@@ -1,0 +1,38 @@
+
+//const { deployProxy } = require('@openzeppelin/truffle-upgrades');
+const { erc1967, upgradeBeacon } = require('@openzeppelin/truffle-upgrades');
+
+const CellarNftSaleV1 = artifacts.require('CellarNftSale');
+const CellarMarketV1 = artifacts.require('CellarMarket');
+const CellarNftSaleV2 = artifacts.require('CellarNftSaleV2');
+const CellarMarketV2 = artifacts.require('CellarMarketV2');
+
+module.exports = async function (deployer) {
+
+  //nft
+  const existingCellarNftSaleV1 = await CellarNftSaleV1.deployed();
+  console.log("Upgraded.find.CellarNftSaleV1.address=", existingCellarNftSaleV1.address);
+
+  const beaconAddressCellarNftSale = await erc1967.getBeaconAddress(existingCellarNftSaleV1.address);
+  await upgradeBeacon(beaconAddressCellarNftSale, CellarNftSaleV2, { deployer });
+  console.log("Beacon upgraded.beaconAddressCellarNftSale=", beaconAddressCellarNftSale);
+  
+  const instanceCellarNftSaleV2 = await CellarNftSaleV2.at(existingCellarNftSaleV1.address);
+  console.log("Upgraded.instanceCellarNftSaleV2=", instanceCellarNftSaleV2.address);
+
+///market
+  const existingCellarMarketV1 = await CellarMarketV1.deployed();
+  console.log("Upgraded.find.existingCellarMarketV1.address=", existingCellarMarketV1.address);
+
+  const beaconAddressCellarMarket = await erc1967.getBeaconAddress(existingCellarMarketV1.address);
+  await upgradeBeacon(beaconAddressCellarMarket, CellarMarketV2, { deployer });
+  console.log("Beacon upgraded.beaconAddressCellarMarket=", beaconAddressCellarMarket);
+
+  const instanceCellarMarketV2 = await CellarMarketV2.at(existingCellarMarketV1.address);
+  console.log("Upgraded.instanceCellarMarketV2=", instanceCellarMarketV2.address);
+
+
+
+ 
+
+};
