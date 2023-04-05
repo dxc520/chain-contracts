@@ -1,0 +1,181 @@
+{
+  "contractName": "IChildTokenUpgradeable",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "depositData",
+          "type": "bytes"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"bytes\",\"name\":\"depositData\",\"type\":\"bytes\"}],\"name\":\"deposit\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/IChildTokenUpgradeable.sol\":\"IChildTokenUpgradeable\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/IChildTokenUpgradeable.sol\":{\"keccak256\":\"0xc053f9107e855e854266fccb61f8be476a69166512f6017df8cadeb6961485a8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bcfd285b97e84dc5025fbcebc346f9de9b38b7c462b6e3f88b4ca033fd2b9951\",\"dweb:/ipfs/QmSPoZNZxqCgg81GGVJjVuUssXXHoynQVkf7tpen8rRxgr\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\ninterface IChildTokenUpgradeable {\n    function deposit(address user, bytes calldata depositData) external;\n}",
+  "sourcePath": "/Users/xcdong/resource/project/Ethereum/dxch/chain-contracts/kugga-usdk/contracts/IChildTokenUpgradeable.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/IChildTokenUpgradeable.sol",
+    "exportedSymbols": {
+      "IChildTokenUpgradeable": [
+        6634
+      ]
+    },
+    "id": 6635,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 6626,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:32:28"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IChildTokenUpgradeable",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "fullyImplemented": false,
+        "id": 6634,
+        "linearizedBaseContracts": [
+          6634
+        ],
+        "name": "IChildTokenUpgradeable",
+        "nameLocation": "76:22:28",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "functionSelector": "cf2c52cb",
+            "id": 6633,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "deposit",
+            "nameLocation": "114:7:28",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 6631,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 6628,
+                  "mutability": "mutable",
+                  "name": "user",
+                  "nameLocation": "130:4:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6633,
+                  "src": "122:12:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 6627,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "122:7:28",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 6630,
+                  "mutability": "mutable",
+                  "name": "depositData",
+                  "nameLocation": "151:11:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 6633,
+                  "src": "136:26:28",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 6629,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "136:5:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "121:42:28"
+            },
+            "returnParameters": {
+              "id": 6632,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "172:0:28"
+            },
+            "scope": 6634,
+            "src": "105:68:28",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 6635,
+        "src": "66:109:28",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:143:28"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.10+commit.fc410830.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2023-04-05T03:18:20.248Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}

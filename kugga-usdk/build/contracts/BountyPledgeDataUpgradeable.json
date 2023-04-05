@@ -1,0 +1,676 @@
+{
+  "contractName": "BountyPledgeDataUpgradeable",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.10+commit.fc410830\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/libraries/BountyPledgeDataUpgradeable.sol\":\"BountyPledgeDataUpgradeable\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/libraries/BountyPledgeDataUpgradeable.sol\":{\"keccak256\":\"0x75eaf7a89dd12f170b39ad4c7db0f06565628a8e87e507adb98cbbda4e79d369\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://b1ab98223b052afe2ab83147e1b1e3a605f57d55b071f88a3e390d2c43aa0528\",\"dweb:/ipfs/QmZxfhR4djq9bQu9G2WnuLYrGPo8mYSto5QhYyDwjweBEY\"]}},\"version\":1}",
+  "bytecode": "0x60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220b16d0bfe0bbc4de7968dd008dc31086fd55c8112a3f44e72ef792685e5472be164736f6c634300080a0033",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220b16d0bfe0bbc4de7968dd008dc31086fd55c8112a3f44e72ef792685e5472be164736f6c634300080a0033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "66:901:33:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;66:901:33;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "66:901:33:-:0;;;;;;;;",
+  "source": "// SPDX-License-Identifier: MIT\npragma solidity >=0.4.22 <0.9.0;\n\nlibrary BountyPledgeDataUpgradeable {\n    struct Bounty {\n        uint256 startTime;\n        uint256 endTime;\n        address owner;\n        uint8 bountyType; //single/multiple\n        string cid; //描述信息\n        Reward reward;\n        uint8 status; // 1= 未结束(正常)、2=compelete,3=expired\n    }\n    struct Reward {\n        uint256 amount;\n        uint256 balance; //余额\n        //uint8 unit; //赏金类型: USDT,MATIC\n        string unit; //赏金类型: USDT,MATIC\n    }\n    struct PledgeRequest {\n        uint256 startTime;\n        uint256 endTime;\n        uint8 bountyType; //1=single/2=multiple\n        string cid;\n        uint256 reward;\n        string rewardUnit; //赏金类型: USDT,MATIC\n    }\n    struct AssetCoin {\n        address asset; // 资产地址\n        string symbol; // 资产简称\n        uint8 id; //内部编号\n        bool enabled; //可用状态\n    }\n}\n",
+  "sourcePath": "/Users/xcdong/resource/project/Ethereum/dxch/chain-contracts/kugga-usdk/contracts/libraries/BountyPledgeDataUpgradeable.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/libraries/BountyPledgeDataUpgradeable.sol",
+    "exportedSymbols": {
+      "BountyPledgeDataUpgradeable": [
+        7316
+      ]
+    },
+    "id": 7317,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 7270,
+        "literals": [
+          "solidity",
+          ">=",
+          "0.4",
+          ".22",
+          "<",
+          "0.9",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "32:32:33"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "BountyPledgeDataUpgradeable",
+        "contractDependencies": [],
+        "contractKind": "library",
+        "fullyImplemented": true,
+        "id": 7316,
+        "linearizedBaseContracts": [
+          7316
+        ],
+        "name": "BountyPledgeDataUpgradeable",
+        "nameLocation": "74:27:33",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "BountyPledgeDataUpgradeable.Bounty",
+            "id": 7286,
+            "members": [
+              {
+                "constant": false,
+                "id": 7272,
+                "mutability": "mutable",
+                "name": "startTime",
+                "nameLocation": "140:9:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7286,
+                "src": "132:17:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7271,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "132:7:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7274,
+                "mutability": "mutable",
+                "name": "endTime",
+                "nameLocation": "167:7:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7286,
+                "src": "159:15:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7273,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "159:7:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7276,
+                "mutability": "mutable",
+                "name": "owner",
+                "nameLocation": "192:5:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7286,
+                "src": "184:13:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 7275,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "184:7:33",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7278,
+                "mutability": "mutable",
+                "name": "bountyType",
+                "nameLocation": "213:10:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7286,
+                "src": "207:16:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 7277,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "207:5:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7280,
+                "mutability": "mutable",
+                "name": "cid",
+                "nameLocation": "258:3:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7286,
+                "src": "251:10:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 7279,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "251:6:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7283,
+                "mutability": "mutable",
+                "name": "reward",
+                "nameLocation": "293:6:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7286,
+                "src": "286:13:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_struct$_Reward_$7293_storage_ptr",
+                  "typeString": "struct BountyPledgeDataUpgradeable.Reward"
+                },
+                "typeName": {
+                  "id": 7282,
+                  "nodeType": "UserDefinedTypeName",
+                  "pathNode": {
+                    "id": 7281,
+                    "name": "Reward",
+                    "nodeType": "IdentifierPath",
+                    "referencedDeclaration": 7293,
+                    "src": "286:6:33"
+                  },
+                  "referencedDeclaration": 7293,
+                  "src": "286:6:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_struct$_Reward_$7293_storage_ptr",
+                    "typeString": "struct BountyPledgeDataUpgradeable.Reward"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7285,
+                "mutability": "mutable",
+                "name": "status",
+                "nameLocation": "315:6:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7286,
+                "src": "309:12:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 7284,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "309:5:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Bounty",
+            "nameLocation": "115:6:33",
+            "nodeType": "StructDefinition",
+            "scope": 7316,
+            "src": "108:268:33",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "BountyPledgeDataUpgradeable.Reward",
+            "id": 7293,
+            "members": [
+              {
+                "constant": false,
+                "id": 7288,
+                "mutability": "mutable",
+                "name": "amount",
+                "nameLocation": "413:6:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7293,
+                "src": "405:14:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7287,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "405:7:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7290,
+                "mutability": "mutable",
+                "name": "balance",
+                "nameLocation": "437:7:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7293,
+                "src": "429:15:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7289,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "429:7:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7292,
+                "mutability": "mutable",
+                "name": "unit",
+                "nameLocation": "519:4:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7293,
+                "src": "512:11:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 7291,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "512:6:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "Reward",
+            "nameLocation": "388:6:33",
+            "nodeType": "StructDefinition",
+            "scope": 7316,
+            "src": "381:176:33",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "BountyPledgeDataUpgradeable.PledgeRequest",
+            "id": 7306,
+            "members": [
+              {
+                "constant": false,
+                "id": 7295,
+                "mutability": "mutable",
+                "name": "startTime",
+                "nameLocation": "601:9:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7306,
+                "src": "593:17:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7294,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "593:7:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7297,
+                "mutability": "mutable",
+                "name": "endTime",
+                "nameLocation": "628:7:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7306,
+                "src": "620:15:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7296,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "620:7:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7299,
+                "mutability": "mutable",
+                "name": "bountyType",
+                "nameLocation": "651:10:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7306,
+                "src": "645:16:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 7298,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "645:5:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7301,
+                "mutability": "mutable",
+                "name": "cid",
+                "nameLocation": "700:3:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7306,
+                "src": "693:10:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 7300,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "693:6:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7303,
+                "mutability": "mutable",
+                "name": "reward",
+                "nameLocation": "721:6:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7306,
+                "src": "713:14:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 7302,
+                  "name": "uint256",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "713:7:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7305,
+                "mutability": "mutable",
+                "name": "rewardUnit",
+                "nameLocation": "744:10:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7306,
+                "src": "737:17:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 7304,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "737:6:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "PledgeRequest",
+            "nameLocation": "569:13:33",
+            "nodeType": "StructDefinition",
+            "scope": 7316,
+            "src": "562:226:33",
+            "visibility": "public"
+          },
+          {
+            "canonicalName": "BountyPledgeDataUpgradeable.AssetCoin",
+            "id": 7315,
+            "members": [
+              {
+                "constant": false,
+                "id": 7308,
+                "mutability": "mutable",
+                "name": "asset",
+                "nameLocation": "828:5:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7315,
+                "src": "820:13:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 7307,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "820:7:33",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7310,
+                "mutability": "mutable",
+                "name": "symbol",
+                "nameLocation": "866:6:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7315,
+                "src": "859:13:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 7309,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "859:6:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7312,
+                "mutability": "mutable",
+                "name": "id",
+                "nameLocation": "904:2:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7315,
+                "src": "898:8:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint8",
+                  "typeString": "uint8"
+                },
+                "typeName": {
+                  "id": 7311,
+                  "name": "uint8",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "898:5:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint8",
+                    "typeString": "uint8"
+                  }
+                },
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 7314,
+                "mutability": "mutable",
+                "name": "enabled",
+                "nameLocation": "936:7:33",
+                "nodeType": "VariableDeclaration",
+                "scope": 7315,
+                "src": "931:12:33",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_bool",
+                  "typeString": "bool"
+                },
+                "typeName": {
+                  "id": 7313,
+                  "name": "bool",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "931:4:33",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  }
+                },
+                "visibility": "internal"
+              }
+            ],
+            "name": "AssetCoin",
+            "nameLocation": "800:9:33",
+            "nodeType": "StructDefinition",
+            "scope": 7316,
+            "src": "793:172:33",
+            "visibility": "public"
+          }
+        ],
+        "scope": 7317,
+        "src": "66:901:33",
+        "usedErrors": []
+      }
+    ],
+    "src": "32:936:33"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.10+commit.fc410830.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.7",
+  "updatedAt": "2023-04-05T03:18:20.259Z",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
