@@ -1,0 +1,504 @@
+{
+  "manifestVersion": "3.2",
+  "admin": {
+    "address": "0xcd97BeFA2ab62238EC8F2d8Db5ed39bB2ff3623b",
+    "txHash": "0xf13cf2953f3d581d796b6044070754485ae8686ee89e4beae1e20aa31224d5d1"
+  },
+  "proxies": [
+    {
+      "address": "0xDA01361E5FfC78107101002A78A00aE766461680",
+      "txHash": "0x3ddf318cfefa295c86e486151f079184ed1bee1fbd973435ed5ecca34ab08dcc",
+      "kind": "transparent"
+    }
+  ],
+  "impls": {
+    "72b1502e938f06a8e567b6004543552432bb4b5cefce1b2bfa0c41004c2deb61": {
+      "address": "0xe3cA2c928464F0656A97bccf2E299ba8CfBdd37c",
+      "txHash": "0x21eb8ee9917ccbd55062fc5c29e6bdc14fdcfcee94b4b031e93ab3df37ab9080",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_uint8",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "contract": "EIP712Upgradeable",
+            "label": "_HASHED_NAME",
+            "type": "t_bytes32",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol:32"
+          },
+          {
+            "contract": "EIP712Upgradeable",
+            "label": "_HASHED_VERSION",
+            "type": "t_bytes32",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol:33"
+          },
+          {
+            "contract": "EIP712Upgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol:120"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_theWorldStatus",
+            "type": "t_bool",
+            "src": "../project:/contracts/BountyPledge.sol:33"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "../project:/contracts/BountyPledge.sol:34"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "../project:/contracts/BountyPledge.sol:35"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_assetIdIndexer",
+            "type": "t_struct(Counter)1737_storage",
+            "src": "../project:/contracts/BountyPledge.sol:37"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_bounties",
+            "type": "t_mapping(t_bytes32,t_struct(Bounty)7286_storage)",
+            "src": "../project:/contracts/BountyPledge.sol:38"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_bountWinners",
+            "type": "t_mapping(t_bytes32,t_array(t_string_storage)dyn_storage)",
+            "src": "../project:/contracts/BountyPledge.sol:39"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_contributeWinnerIndexer",
+            "type": "t_mapping(t_bytes32,t_bool)",
+            "src": "../project:/contracts/BountyPledge.sol:40"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_supportedAssetCoins",
+            "type": "t_mapping(t_address,t_struct(AssetCoin)7315_storage)",
+            "src": "../project:/contracts/BountyPledge.sol:42"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_supportedAssetSymbolIndexer",
+            "type": "t_mapping(t_bytes32,t_address)",
+            "src": "../project:/contracts/BountyPledge.sol:43"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_assetCoinList",
+            "type": "t_array(t_address)dyn_storage",
+            "src": "../project:/contracts/BountyPledge.sol:48"
+          }
+        ],
+        "types": {
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_struct(Counter)1737_storage": {
+            "label": "struct CountersUpgradeable.Counter",
+            "members": [
+              {
+                "label": "_value",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_bytes32,t_struct(Bounty)7286_storage)": {
+            "label": "mapping(bytes32 => struct BountyPledgeDataUpgradeable.Bounty)"
+          },
+          "t_bytes32": {
+            "label": "bytes32"
+          },
+          "t_struct(Bounty)7286_storage": {
+            "label": "struct BountyPledgeDataUpgradeable.Bounty",
+            "members": [
+              {
+                "label": "startTime",
+                "type": "t_uint256"
+              },
+              {
+                "label": "endTime",
+                "type": "t_uint256"
+              },
+              {
+                "label": "owner",
+                "type": "t_address"
+              },
+              {
+                "label": "bountyType",
+                "type": "t_uint8"
+              },
+              {
+                "label": "cid",
+                "type": "t_string_storage"
+              },
+              {
+                "label": "reward",
+                "type": "t_struct(Reward)7293_storage"
+              },
+              {
+                "label": "status",
+                "type": "t_uint8"
+              }
+            ]
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          },
+          "t_struct(Reward)7293_storage": {
+            "label": "struct BountyPledgeDataUpgradeable.Reward",
+            "members": [
+              {
+                "label": "amount",
+                "type": "t_uint256"
+              },
+              {
+                "label": "balance",
+                "type": "t_uint256"
+              },
+              {
+                "label": "unit",
+                "type": "t_string_storage"
+              }
+            ]
+          },
+          "t_mapping(t_bytes32,t_array(t_string_storage)dyn_storage)": {
+            "label": "mapping(bytes32 => string[])"
+          },
+          "t_array(t_string_storage)dyn_storage": {
+            "label": "string[]"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "label": "mapping(bytes32 => bool)"
+          },
+          "t_mapping(t_address,t_struct(AssetCoin)7315_storage)": {
+            "label": "mapping(address => struct BountyPledgeDataUpgradeable.AssetCoin)"
+          },
+          "t_struct(AssetCoin)7315_storage": {
+            "label": "struct BountyPledgeDataUpgradeable.AssetCoin",
+            "members": [
+              {
+                "label": "asset",
+                "type": "t_address"
+              },
+              {
+                "label": "symbol",
+                "type": "t_string_storage"
+              },
+              {
+                "label": "id",
+                "type": "t_uint8"
+              },
+              {
+                "label": "enabled",
+                "type": "t_bool"
+              }
+            ]
+          },
+          "t_mapping(t_bytes32,t_address)": {
+            "label": "mapping(bytes32 => address)"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    },
+    "3826f12c70a4cf070759472e6c0584868ccf545953f740ed0731799dfd966e8f": {
+      "address": "0x3B140f5B2a92F55BCB564c4B13A27E82c41Ff5f9",
+      "txHash": "0x45689398e9d7804c1a9dcc51a27ea93c1af6592aa8a1cfcfde245289c0090c44",
+      "layout": {
+        "storage": [
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_uint8",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:62",
+            "retypedFrom": "bool"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "../@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol:67"
+          },
+          {
+            "contract": "EIP712Upgradeable",
+            "label": "_HASHED_NAME",
+            "type": "t_bytes32",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol:32"
+          },
+          {
+            "contract": "EIP712Upgradeable",
+            "label": "_HASHED_VERSION",
+            "type": "t_bytes32",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol:33"
+          },
+          {
+            "contract": "EIP712Upgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol:120"
+          },
+          {
+            "contract": "ContextUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)50_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol:36"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "_owner",
+            "type": "t_address",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:22"
+          },
+          {
+            "contract": "OwnableUpgradeable",
+            "label": "__gap",
+            "type": "t_array(t_uint256)49_storage",
+            "src": "../@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol:94"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_theWorldStatus",
+            "type": "t_bool",
+            "src": "../project:/contracts/BountyPledge.sol:33"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_name",
+            "type": "t_string_storage",
+            "src": "../project:/contracts/BountyPledge.sol:34"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_symbol",
+            "type": "t_string_storage",
+            "src": "../project:/contracts/BountyPledge.sol:35"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_assetIdIndexer",
+            "type": "t_struct(Counter)1737_storage",
+            "src": "../project:/contracts/BountyPledge.sol:37"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_bounties",
+            "type": "t_mapping(t_bytes32,t_struct(Bounty)7286_storage)",
+            "src": "../project:/contracts/BountyPledge.sol:38"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_bountWinners",
+            "type": "t_mapping(t_bytes32,t_array(t_string_storage)dyn_storage)",
+            "src": "../project:/contracts/BountyPledge.sol:39"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_contributeWinnerIndexer",
+            "type": "t_mapping(t_bytes32,t_bool)",
+            "src": "../project:/contracts/BountyPledge.sol:40"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_supportedAssetCoins",
+            "type": "t_mapping(t_address,t_struct(AssetCoin)7315_storage)",
+            "src": "../project:/contracts/BountyPledge.sol:42"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_supportedAssetSymbolIndexer",
+            "type": "t_mapping(t_bytes32,t_address)",
+            "src": "../project:/contracts/BountyPledge.sol:43"
+          },
+          {
+            "contract": "BountyPledge",
+            "label": "_assetCoinList",
+            "type": "t_array(t_address)dyn_storage",
+            "src": "../project:/contracts/BountyPledge.sol:48"
+          }
+        ],
+        "types": {
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_struct(Counter)1737_storage": {
+            "label": "struct CountersUpgradeable.Counter",
+            "members": [
+              {
+                "label": "_value",
+                "type": "t_uint256"
+              }
+            ]
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_mapping(t_bytes32,t_struct(Bounty)7286_storage)": {
+            "label": "mapping(bytes32 => struct BountyPledgeDataUpgradeable.Bounty)"
+          },
+          "t_bytes32": {
+            "label": "bytes32"
+          },
+          "t_struct(Bounty)7286_storage": {
+            "label": "struct BountyPledgeDataUpgradeable.Bounty",
+            "members": [
+              {
+                "label": "startTime",
+                "type": "t_uint256"
+              },
+              {
+                "label": "endTime",
+                "type": "t_uint256"
+              },
+              {
+                "label": "owner",
+                "type": "t_address"
+              },
+              {
+                "label": "bountyType",
+                "type": "t_uint8"
+              },
+              {
+                "label": "cid",
+                "type": "t_string_storage"
+              },
+              {
+                "label": "reward",
+                "type": "t_struct(Reward)7293_storage"
+              },
+              {
+                "label": "status",
+                "type": "t_uint8"
+              }
+            ]
+          },
+          "t_address": {
+            "label": "address"
+          },
+          "t_uint8": {
+            "label": "uint8"
+          },
+          "t_struct(Reward)7293_storage": {
+            "label": "struct BountyPledgeDataUpgradeable.Reward",
+            "members": [
+              {
+                "label": "amount",
+                "type": "t_uint256"
+              },
+              {
+                "label": "balance",
+                "type": "t_uint256"
+              },
+              {
+                "label": "unit",
+                "type": "t_string_storage"
+              }
+            ]
+          },
+          "t_mapping(t_bytes32,t_array(t_string_storage)dyn_storage)": {
+            "label": "mapping(bytes32 => string[])"
+          },
+          "t_array(t_string_storage)dyn_storage": {
+            "label": "string[]"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "label": "mapping(bytes32 => bool)"
+          },
+          "t_mapping(t_address,t_struct(AssetCoin)7315_storage)": {
+            "label": "mapping(address => struct BountyPledgeDataUpgradeable.AssetCoin)"
+          },
+          "t_struct(AssetCoin)7315_storage": {
+            "label": "struct BountyPledgeDataUpgradeable.AssetCoin",
+            "members": [
+              {
+                "label": "asset",
+                "type": "t_address"
+              },
+              {
+                "label": "symbol",
+                "type": "t_string_storage"
+              },
+              {
+                "label": "id",
+                "type": "t_uint8"
+              },
+              {
+                "label": "enabled",
+                "type": "t_bool"
+              }
+            ]
+          },
+          "t_mapping(t_bytes32,t_address)": {
+            "label": "mapping(bytes32 => address)"
+          },
+          "t_array(t_address)dyn_storage": {
+            "label": "address[]"
+          },
+          "t_array(t_uint256)49_storage": {
+            "label": "uint256[49]"
+          },
+          "t_array(t_uint256)50_storage": {
+            "label": "uint256[50]"
+          }
+        }
+      }
+    }
+  }
+}
